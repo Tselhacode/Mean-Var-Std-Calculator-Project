@@ -1,0 +1,31 @@
+import numpy as np
+def calculate(my_list):
+    # exception handling in case the list does not have 9 numbers
+    if len(my_list) != 9:
+        raise ValueError("List must contain nine numbers.")
+    else:
+      # convert the list to a numpy array 
+        np_array = np.array(my_list)
+      # convert the 1d array to a 3d matrix array
+        matrix = np.reshape(np_array ,(3 ,3))
+    # mean of the matrix along x, y, and flattened
+    mean = [matrix.mean(axis = 0).tolist(), matrix.mean(axis = 1).tolist(), matrix.mean()]
+    # variance of the matrix along x, y, and flattened
+    variance = [matrix.var(axis = 0).tolist(), matrix.var(axis = 1).tolist(), matrix.var()]
+    # std of the matrix along x, y, and flattened
+    std = [matrix.std(axis = 0).tolist(), matrix.std(axis = 1).tolist(), matrix.std()]
+    # max of the matrix along x, y, and flattened
+    max = [matrix.max(axis = 0).tolist(), matrix.max(axis = 1).tolist(), matrix.max()]
+    # min of the matrix along x, y, and flattened
+    min = [matrix.min(axis = 0).tolist(), matrix.min(axis = 1).tolist(),matrix.min()]
+    # sum of the matrix along x, y, and flattened
+    sum = [matrix.sum(axis = 0).tolist(), matrix.sum(axis = 1).tolist(),matrix.sum()]
+    # create a dictionary
+    calculations = {'mean': mean,
+                    'variance': variance,
+                    'standard deviation': std,
+                    'max': max,
+                    'min': min,
+                    'sum': sum
+                    }
+    return calculations
